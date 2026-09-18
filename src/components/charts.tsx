@@ -72,12 +72,12 @@ export function BarList({title, rows, note}: {title: string; rows: Row[]; note?:
         {rows.map((r) => (
           <HStack key={r.label} gap={3} align="center" as="li">
             <span className="bar-label">
-              <Text type="supporting" color="secondary" display="block">
+              <Text type="supporting" color={r.isMuted ? 'secondary' : 'primary'} display="block">
                 {r.label}
               </Text>
             </span>
-            <Track value={r.value} />
-            <Text type="figure-sm" color="secondary">
+            <Track value={r.value} series={r.isMuted ? 'muted' : undefined} />
+            <Text type="figure-sm" color={r.isMuted ? 'secondary' : 'primary'}>
               {r.value}%
             </Text>
           </HStack>

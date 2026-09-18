@@ -2,6 +2,7 @@ import {useEffect} from 'react';
 import {Shell} from './components/Shell';
 import {Home} from './pages/Home';
 import {DesignerStory} from './pages/DesignerStory';
+import {LeaderStory} from './pages/LeaderStory';
 import {ComingSoon} from './pages/ComingSoon';
 import {useRoute} from './router';
 
@@ -16,12 +17,7 @@ export function App() {
     <Shell route={route}>
       {route === 'home' && <Home />}
       {route === 'designers' && <DesignerStory />}
-      {route === 'leaders' && (
-        <ComingSoon
-          title="For product and technology leaders"
-          teaser="Prototypes are the deliverable now, designers ship, and velocity outran the org. This story is in progress."
-        />
-      )}
+      {route === 'leaders' && <LeaderStory />}
       {route === 'risk' && (
         <ComingSoon
           title="For risk and operations leaders"

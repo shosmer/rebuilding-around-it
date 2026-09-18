@@ -12,7 +12,7 @@ export const SOURCE = {
     'The authors note the sample was reached through their own channels and likely skews towards designers who have already embraced AI. They present the findings as directional, not as benchmarks.',
 };
 
-export type Row = {label: string; value: number; prior?: number | null};
+export type Row = {label: string; value: number; prior?: number | null; isMuted?: boolean};
 
 export const weeklyUse = {
   now: 91,
@@ -44,3 +44,29 @@ export const honest = {
 };
 
 export const satisfaction = {improved: 53, decreased: 18};
+
+// Product and technology leader story
+export const prototypes = {expected: 43, startWith: 36};
+
+export const shipped = {
+  overall: 50,
+  byStage: [
+    {label: 'Early-stage', value: 68},
+    {label: 'Growth-stage', value: 50},
+    {label: 'Publicly traded', value: 33},
+  ] as Row[],
+  byRole: {founders: 70, executivesAndManagers: 47, ics: 47},
+  identifyAsDesignEngineers: 20,
+};
+
+export const quality = {sticks: 80, challenge: 62};
+
+export const policyGap: Row[] = [
+  {label: 'Designers who feel expectations rising', value: 73},
+  {label: 'Leaders who changed the career ladder', value: 14, isMuted: true},
+  {label: 'Leaders who updated review metrics', value: 8, isMuted: true},
+  {label: 'Leaders who changed hiring', value: 8, isMuted: true},
+  {label: 'Leaders who changed compensation', value: 4, isMuted: true},
+];
+
+export const headcount = {reducedWithSameOutput: 19, keepOrGrow: 60};
