@@ -1,0 +1,13 @@
+# Private working material. Never commit.
+personas/
+*.docx
+ledger-design-system/audiences.md
+
+# OS and editor
+.DS_Store
+.vscode/
+
+# Build
+node_modules/
+dist/
+*.tsbuildinfo

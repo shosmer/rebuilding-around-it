@@ -1,0 +1,60 @@
+/* Chart marks. Layout and text come from Astryx components; these rules only
+   paint the bars, using Ledger tokens so they follow light and dark mode.
+   Ledger rules: thin marks, square at the baseline, radius-sm on the free end,
+   a surface-colored gap between neighbors, text never in the series color. */
+@layer site {
+  .bar-track {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    position: relative;
+    block-size: var(--ledger-bar-thickness);
+    background: var(--color-background-muted);
+    border-radius: 0 var(--radius-inner) var(--radius-inner) 0;
+    overflow: hidden;
+  }
+  .bar-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    inline-size: calc(var(--v) * 1%);
+    background: var(--ledger-series-1);
+    border-radius: 0 var(--radius-inner) var(--radius-inner) 0;
+    transition: inline-size var(--duration-medium) var(--ease-standard);
+  }
+  .bar-fill[data-series='b'] {
+    background: var(--ledger-series-2);
+  }
+  .bar-fill[data-series='muted'] {
+    background: var(--ledger-series-muted);
+  }
+  .bar-pair {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    display: grid;
+    gap: var(--spacing-0-5);
+  }
+  .bar-pair .bar-track {
+    flex: none;
+    inline-size: 100%;
+    block-size: 14px;
+  }
+  .bar-label {
+    flex: 0 0 auto;
+    inline-size: 46%;
+    max-inline-size: 200px;
+  }
+  .legend-swatch {
+    display: inline-block;
+    inline-size: var(--spacing-3);
+    block-size: var(--spacing-3);
+    border-radius: var(--radius-inner);
+    background: var(--ledger-series-1);
+  }
+  .legend-swatch[data-series='b'] {
+    background: var(--ledger-series-2);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar-fill {
+      transition: none;
+    }
+  }
+}

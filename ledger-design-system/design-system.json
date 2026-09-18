@@ -1,0 +1,25 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-18T19:51:33Z"
+  },
+  "title": "Ledger",
+  "namespace": "Ledger",
+  "libraries": [],
+  "sections": {},
+  "groups": [],
+  "assetGroups": {},
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "Shanny",
+    "via": "Cowork",
+    "at": "2026-09-18T19:51:33Z",
+    "note": "Created Ledger: a data-forward Astryx theme with light and dark tokens, chart rules, audience guidance, StatTile and ComparisonBar."
+  }
+}

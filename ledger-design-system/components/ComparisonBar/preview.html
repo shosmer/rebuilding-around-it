@@ -1,0 +1,54 @@
+<!-- @dsCard group="Evidence" height=300 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ComparisonBar — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; }
+  body { background:var(--surface-0); color:var(--ink); font-family:var(--font-sans); padding:var(--space-4); }
+  .panel { background:var(--surface-1); border:var(--stroke-hair) solid var(--line-1); border-radius:var(--radius-lg); padding:var(--space-6); }
+  .title { margin:0 0 var(--space-3); }
+  .legend { display:flex; gap:var(--space-4); color:var(--ink-2); margin-bottom:var(--space-4); }
+  .legend span { display:inline-flex; align-items:center; gap:var(--space-2); }
+  .sw { width:12px; height:12px; border-radius:var(--radius-sm); display:inline-block; }
+  .sw.s1 { background:var(--series-1); } .sw.s2 { background:var(--series-2); }
+  .grid { display:grid; grid-template-columns:160px 1fr; row-gap:var(--space-3); column-gap:var(--space-4); align-items:center; }
+  .lab { color:var(--ink-2); text-align:right; }
+  .lab.hi { color:var(--ink); }
+  .plot { position:relative; }
+  .track { position:relative; height:calc(var(--bar-thickness) * 2 + var(--space-0\.5)); background:var(--surface-2); border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
+  .bar { position:absolute; left:0; height:var(--bar-thickness); border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
+  .bar.now { top:0; background:var(--series-1); }
+  .bar.now.muted { background:var(--series-muted); }
+  .bar.prior { top:calc(var(--bar-thickness) + var(--space-0\.5)); background:var(--series-2); }
+  .val { position:absolute; color:var(--ink-2); white-space:nowrap; margin-left:var(--space-1); line-height:var(--bar-thickness); }
+  .val.now { top:0; } .val.prior { top:calc(var(--bar-thickness) + var(--space-0\.5)); }
+  .val.hi { color:var(--ink); }
+  .axis { grid-column:2; border-top:var(--stroke-axis) solid var(--line-2); display:flex; justify-content:space-between; color:var(--ink-3); padding-top:var(--space-1); }
+  .src { color:var(--ink-3); margin-top:var(--space-4); }
+</style>
+</head>
+<body>
+<div class="panel">
+  <h3 class="title display-md">Guidance is arriving bottom-up</h3>
+  <div class="legend body-sm"><span><i class="sw s1"></i>2026</span><span><i class="sw s2"></i>2025</span></div>
+  <div class="grid">
+    <div class="lab hi title">Peers</div>
+    <div class="plot"><div class="track">
+      <div class="bar now" style="width:80%"></div><span class="val now hi figure-md" style="left:80%">80%</span>
+      <div class="bar prior" style="width:24%"></div><span class="val prior figure-sm" style="left:24%">24%</span>
+    </div></div>
+    <div class="lab body-sm">Leadership</div>
+    <div class="plot"><div class="track">
+      <div class="bar now muted" style="width:16%"></div><span class="val now figure-sm" style="left:16%">16%</span>
+      <div class="bar prior" style="width:32%"></div><span class="val prior figure-sm" style="left:32%">32%</span>
+    </div></div>
+    <div class="axis figure-sm"><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></div>
+  </div>
+  <div class="src body-sm">Source: Designer Fund and Foundation Capital, AI in Design 2026. n = 900+ designers.</div>
+</div>
+</body>
+</html>

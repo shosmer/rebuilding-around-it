@@ -1,0 +1,45 @@
+<!-- @dsCard group="Evidence" height=200 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>StatTile — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; }
+  body { background:var(--surface-0); color:var(--ink); font-family:var(--font-sans); padding:var(--space-4); }
+  .row { display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-4); }
+  .tile { background:var(--surface-1); border:var(--stroke-hair) solid var(--line-1); border-radius:var(--radius-lg); padding:var(--space-6); display:flex; flex-direction:column; gap:var(--space-2); }
+  .eyebrow { color:var(--ink-3); text-transform:uppercase; }
+  .figure { color:var(--ink); }
+  .tile.highlighted .figure { color:var(--accent); }
+  .change { color:var(--ink-2); margin-top:calc(-1 * var(--space-1)); }
+  .base { color:var(--ink-3); margin-top:auto; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="tile highlighted">
+    <div class="eyebrow eyebrow">Weekly AI use</div>
+    <div class="figure figure-xl">91%</div>
+    <div class="change figure-sm">from 54% a year earlier</div>
+    <div class="body">Weekly use of AI for design tasks is now near-universal.</div>
+    <div class="base body-sm">n = 900+ designers, 60+ countries</div>
+  </div>
+  <div class="tile">
+    <div class="eyebrow eyebrow">Daily use</div>
+    <div class="figure figure-xl">75%</div>
+    <div class="body">Three in four designers use AI every working day.</div>
+    <div class="base body-sm">n = 900+</div>
+  </div>
+  <div class="tile">
+    <div class="eyebrow eyebrow">Tools in a stack</div>
+    <div class="figure figure-xl">7</div>
+    <div class="change figure-sm">from 3</div>
+    <div class="body">Off-the-shelf AI tools the average designer uses regularly.</div>
+    <div class="base body-sm">n = 900+</div>
+  </div>
+</div>
+</body>
+</html>
