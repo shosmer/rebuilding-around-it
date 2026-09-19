@@ -5,33 +5,33 @@
 <meta charset="utf-8">
 <title>Ledger</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,700..900&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet">
 <style>
   html, body { margin:0; height:100%; }
   body { color:var(--ink); font-family:var(--font-sans); overflow:hidden;
-    background: radial-gradient(60% 50% at 85% 0%, var(--page-glow), transparent 70%), linear-gradient(180deg, var(--page-top), var(--page-bottom)); }
+    background: radial-gradient(55% 45% at 100% 0%, var(--page-glow), transparent 70%), radial-gradient(55% 45% at 0% 100%, var(--page-glow-2), transparent 70%), linear-gradient(180deg, var(--page-top), var(--page-bottom)); }
   .cover { position:relative; width:960px; height:288px; overflow:hidden; }
-  .cover::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply; background-size:240px 240px;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.098 0 0 0 0 0.094 0 0 0 0 0.082 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>"); }
-  [data-theme="dark"] .cover::before { opacity:.07; mix-blend-mode:screen;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.965 0 0 0 0 0.957 0 0 0 0 0.937 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>"); }
-  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
+  .cover::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; background-size:16px 16px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M0 12 L8 4 L16 12' fill='none' stroke='%230f1a19' stroke-width='1'/></svg>"); }
+  [data-theme="dark"] .cover::before { opacity:.09;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M0 12 L8 4 L16 12' fill='none' stroke='%23edf4f2' stroke-width='1'/></svg>"); }
+  .art { position:absolute; top:0; left:480px; width:480px; height:288px; }
   .art svg { display:block; width:480px; height:288px; overflow:visible; }
+  .edge { fill:var(--card-edge); }
   .accent { fill:url(#gAccent); }
   .deep { fill:var(--surface-inverse); }
-  .ochre { fill:url(#gOchre); }
+  .counter { fill:var(--counter); }
   .card { fill:url(#gCard); stroke:var(--line-1); stroke-width:var(--stroke-hair); }
-  .bar { fill:url(#gBar); rx:var(--radius-sm); }
+  .bar { fill:url(#gBar); }
   .bar.muted { fill:var(--series-muted); }
+  .hatch { fill:url(#pHatch); }
+  .zig { fill:none; stroke:var(--accent); stroke-width:var(--stroke-line); }
+  .zig.ground { stroke:var(--page-top); }
   .axis { stroke:var(--line-2); stroke-width:var(--stroke-axis); }
-  .blk { rx:var(--radius-lg); }
-  .hero { rx:var(--radius-xl); }
-  .shadow { filter:drop-shadow(0 16px 24px rgba(25,24,21,.28)); }
-  [data-theme="dark"] .shadow { filter:drop-shadow(0 16px 24px rgba(0,0,0,.7)); }
-  .glow { filter:drop-shadow(0 6px 14px var(--accent-glow)); }
-  .words { position:absolute; left:var(--space-6); bottom:var(--space-6); max-width:440px; }
-  .name { margin:0; font-family:var(--font-display); font-size:120px; line-height:.9; font-weight:500; letter-spacing:-.02em; color:var(--ink); }
-  .tag { margin:var(--space-2) 0 0 var(--space-1); font-size:14px; line-height:20px; color:var(--ink-3); }
+  .glow { filter:drop-shadow(0 0 10px var(--accent-glow)); }
+  .words { position:absolute; left:var(--space-4); bottom:var(--space-4); max-width:440px; }
+  .name { margin:0; font-family:var(--font-display); font-size:88px; line-height:.9; font-weight:900; font-stretch:125%; letter-spacing:-.04em; text-transform:uppercase; color:var(--ink); }
+  .tag { margin:var(--space-1) 0 0 2px; font-size:14px; line-height:20px; color:var(--ink-3); }
 </style>
 </head>
 <body>
@@ -39,28 +39,36 @@
 <div class="art" aria-hidden="true">
 <svg viewBox="0 0 480 288" width="480" height="288">
 <!--
-  blocks      accent gradient (accent-deep → accent, 135deg) 176×208 bled off the top, radius-xl: the hero panel · surface-inverse 300×216 bleeding off the right edge: the masthead · series-2 gradient 64×48 bled off the top: last year, small · a card (card-top → card-bottom, line-1 edge, shadow-card) 176×56 as the tint — ≈40% of 960×288
-  arrangement one tall accent slab left of the box, the deep masthead slab bleeding right, bottoms on one line space-6 above the edge, space-4 gutters; the slabs carry shadow-card so they rest on the page the way the cards do
-  pattern     thin bars anchored to a baseline, from the Charts rule "series-1-deep at the baseline to series-1 at the free end, radius-sm on the free end, the highlighted bar glows": four bar-thickness bars on the masthead, the top one in the series-1 gradient with shadow-glow, the rest series-muted, the stroke-axis baseline in line-2
-  scales      slab sides in space-4 multiples (176, 208, 216, 300); gutters space-4; bar height bar-thickness (24), bar gap space-2 (8); corners radius-xl on the hero slab, radius-lg on the others, radius-sm on bar ends
+  blocks      accent gradient (accent-deep → accent at chevron-angle) 176×208 bled off the top, notch-xl on its top-right corner, on a card-edge plate at offset-3d: the hero panel · surface-inverse 300×216 bleeding off the right edge, notch-xl, on its own plate: the masthead · counter 64×48 bled off the top: the one orchid reply, small · a card (card-top → card-bottom, line-1 edge, notch-lg, plate) 176×56 as the tint — ≈42% of 960×288
+  arrangement one tall accent slab left of the box, the masthead slab bleeding right, bottoms on one line space-4 above the edge, space-2 gutters; every block cut at 45deg and resting on its solid plate
+  pattern     chevrons, from the seed's VNnV and the README's "one angle": three zigzag strokes at chevron-pitch crossing the masthead in accent, one cut from the ground across the hero slab; and the Charts rule made literal: four bar-thickness bars on a line-2 baseline, the top one in the series-1 gradient with the 45deg hatch and glow, the rest series-muted
+  scales      slab sides in space-1 multiples (176, 208, 216, 300); gutters space-2; notches notch-xl (32) and notch-lg (16); plate offset offset-3d (8); zigzag pitch chevron-pitch (16), amplitude 8; bar height bar-thickness (24), bar gap space-1 (8); no radius anywhere (radius-none)
 -->
 <defs>
-  <linearGradient id="gAccent" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent-deep)"/><stop offset="1" stop-color="var(--accent)"/></linearGradient>
-  <linearGradient id="gOchre" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--series-2-deep)"/><stop offset="1" stop-color="var(--series-2)"/></linearGradient>
+  <linearGradient id="gAccent" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="var(--accent-deep)"/><stop offset="1" stop-color="var(--accent)"/></linearGradient>
   <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--card-top)"/><stop offset="1" stop-color="var(--card-bottom)"/></linearGradient>
   <linearGradient id="gBar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--series-1-deep)"/><stop offset="1" stop-color="var(--series-1)"/></linearGradient>
+  <pattern id="pHatch" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="2" height="16" fill="var(--hatch)"/></pattern>
 </defs>
-<g class="shadow">
-<rect class="accent hero" x="16" y="-16" width="176" height="208"/>
-<rect class="card blk" x="16" y="208" width="176" height="56"/>
-<rect class="ochre blk" x="208" y="-16" width="64" height="48"/>
-<rect class="deep blk" x="208" y="48" width="300" height="216"/>
-</g>
-<line class="axis" x1="240" y1="80" x2="240" y2="232"/>
-<rect class="bar glow" x="240" y="88" width="192" height="24"/>
-<rect class="bar muted" x="240" y="120" width="72" height="24"/>
-<rect class="bar muted" x="240" y="152" width="136" height="24"/>
-<rect class="bar muted" x="240" y="184" width="40" height="24"/>
+<!-- plates -->
+<polygon class="edge" points="24,-8 168,-8 200,24 200,200 24,200"/>
+<polygon class="edge" points="24,216 184,216 200,232 200,272 24,272"/>
+<polygon class="edge" points="216,56 484,56 516,88 516,272 216,272"/>
+<!-- blocks -->
+<polygon class="accent" points="16,-16 160,-16 192,16 192,192 16,192"/>
+<polygon class="card" points="16,208 176,208 192,224 192,264 16,264"/>
+<rect class="counter" x="208" y="-16" width="64" height="48"/>
+<polygon class="deep" points="208,48 476,48 508,80 508,264 208,264"/>
+<!-- chevrons -->
+<polyline class="zig ground" points="16,120 32,104 48,120 64,104 80,120 96,104 112,120 128,104 144,120 160,104 176,120 192,104"/>
+<polyline class="zig" points="208,232 224,216 240,232 256,216 272,232 288,216 304,232 320,216 336,232 352,216 368,232 384,216 400,232 416,216 432,232 448,216 464,232 480,216 496,232 508,220"/>
+<polyline class="zig" points="208,248 224,232 240,248 256,232 272,248 288,232 304,248 320,232 336,248 352,232 368,248 384,232 400,248 416,232 432,248 448,232 464,248 480,232 496,248 508,236"/>
+<!-- bars -->
+<line class="axis" x1="240" y1="72" x2="240" y2="200"/>
+<g class="glow"><rect class="bar" x="240" y="80" width="200" height="24"/><rect class="hatch" x="240" y="80" width="200" height="24"/></g>
+<rect class="bar muted" x="240" y="112" width="72" height="24"/>
+<rect class="bar muted" x="240" y="144" width="136" height="24"/>
+<rect class="bar muted" x="240" y="176" width="40" height="24"/>
 </svg>
 </div>
 <div class="words">

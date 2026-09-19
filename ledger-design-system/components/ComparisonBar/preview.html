@@ -1,51 +1,59 @@
-<!-- @dsCard group="Evidence" height=340 -->
+<!-- @dsCard group="Evidence" height=360 -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>ComparisonBar — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,700..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
   html, body { margin:0; }
-  body { position:relative; min-height:100%; color:var(--ink); font-family:var(--font-sans); padding:var(--space-6);
-    background: radial-gradient(60% 50% at 85% 0%, var(--page-glow), transparent 70%), linear-gradient(180deg, var(--page-top), var(--page-bottom)); }
-  body::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply; background-size:240px 240px;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.098 0 0 0 0 0.094 0 0 0 0 0.082 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>"); }
-  [data-theme="dark"] body::before { opacity:.07; mix-blend-mode:screen;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.965 0 0 0 0 0.957 0 0 0 0 0.937 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>"); }
-  .card { position:relative; background:linear-gradient(180deg, var(--card-top), var(--card-bottom)); border:var(--stroke-hair) solid var(--line-1); border-radius:var(--radius-lg);
-    box-shadow: inset 0 1px 0 var(--card-highlight), var(--shadow-card); padding:var(--space-6); }
-  .title { margin:0 0 var(--space-3); }
-  .legend { display:flex; gap:var(--space-4); color:var(--ink-2); margin-bottom:var(--space-6); }
-  .legend span { display:inline-flex; align-items:center; gap:var(--space-2); }
+  body { position:relative; min-height:100%; color:var(--ink); font-family:var(--font-sans); padding:var(--space-4) var(--space-4) var(--space-5);
+    background: radial-gradient(55% 45% at 100% 0%, var(--page-glow), transparent 70%), radial-gradient(55% 45% at 0% 100%, var(--page-glow-2), transparent 70%), linear-gradient(180deg, var(--page-top), var(--page-bottom)); }
+  body::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; background-size:16px 16px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M0 12 L8 4 L16 12' fill='none' stroke='%230f1a19' stroke-width='1'/></svg>"); }
+  [data-theme="dark"] body::before { opacity:.09;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M0 12 L8 4 L16 12' fill='none' stroke='%23edf4f2' stroke-width='1'/></svg>"); }
+  .plate { position:relative; z-index:0; }
+  .plate::before { content:""; position:absolute; inset:0; z-index:-1; transform:translate(var(--offset-3d), var(--offset-3d)); background:var(--card-edge);
+    clip-path:polygon(0 0, calc(100% - var(--notch-lg)) 0, 100% var(--notch-lg), 100% 100%, 0 100%); }
+  .card { position:relative; background:linear-gradient(180deg, var(--card-top), var(--card-bottom)); border:var(--stroke-hair) solid var(--line-1); padding:var(--space-4);
+    clip-path:polygon(0 0, calc(100% - var(--notch-lg)) 0, 100% var(--notch-lg), 100% 100%, 0 100%); }
+  .wide { font-stretch:125%; } .semi { font-stretch:112%; }
+  .eyebrow { color:var(--ink-3); text-transform:uppercase; }
+  .eyebrow .sl { color:var(--counter); }
+  .title { margin:0 0 var(--space-1); }
+  .legend { display:flex; gap:var(--space-2); color:var(--ink-2); margin-bottom:var(--space-3); }
+  .legend span { display:inline-flex; align-items:center; gap:var(--space-1); }
   .sw { width:12px; height:12px; border-radius:var(--radius-sm); display:inline-block; }
   .sw.s1 { background:linear-gradient(90deg, var(--series-1-deep), var(--series-1)); } .sw.s2 { background:linear-gradient(90deg, var(--series-2-deep), var(--series-2)); }
-  .grid { display:grid; grid-template-columns:150px 1fr; row-gap:var(--space-4); column-gap:var(--space-4); align-items:center; }
+  .grid { display:grid; grid-template-columns:150px 1fr; row-gap:var(--space-2); column-gap:var(--space-2); align-items:center; }
   .lab { color:var(--ink-2); text-align:right; }
   .lab.hi { color:var(--ink); }
   .plot { position:relative; }
-  .track { position:relative; height:calc(var(--bar-thickness) * 2 + var(--space-0\.5)); background:var(--surface-2); box-shadow:inset 0 0 0 var(--stroke-hair) var(--line-1); border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
-  .bar { position:absolute; left:0; height:var(--bar-thickness); border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
+  .track { position:relative; height:calc(var(--bar-thickness) * 2 + var(--space-0\.25)); background:var(--surface-2); box-shadow:inset 0 0 0 var(--stroke-hair) var(--line-1); }
+  .bar { position:absolute; left:0; height:var(--bar-thickness); }
   .bar.now { top:0; background:linear-gradient(90deg, var(--series-1-deep), var(--series-1)); }
   .bar.now.hi { box-shadow:var(--shadow-glow); }
+  .bar.now.hi::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(var(--chevron-angle), var(--hatch) 0 2px, transparent 2px var(--chevron-pitch)); }
   .bar.now.muted { background:var(--series-muted); }
-  .bar.prior { top:calc(var(--bar-thickness) + var(--space-0\.5)); background:linear-gradient(90deg, var(--series-2-deep), var(--series-2)); }
-  .val { position:absolute; color:var(--ink-2); white-space:nowrap; margin-left:var(--space-2); line-height:var(--bar-thickness); }
-  .val.now { top:0; } .val.prior { top:calc(var(--bar-thickness) + var(--space-0\.5)); }
+  .bar.prior { top:calc(var(--bar-thickness) + var(--space-0\.25)); background:linear-gradient(90deg, var(--series-2-deep), var(--series-2)); }
+  .val { position:absolute; color:var(--ink-2); white-space:nowrap; margin-left:var(--space-1); line-height:var(--bar-thickness); }
+  .val.now { top:0; } .val.prior { top:calc(var(--bar-thickness) + var(--space-0\.25)); }
   .val.hi { color:var(--ink); }
-  .axis { grid-column:2; border-top:var(--stroke-axis) solid var(--line-2); display:flex; justify-content:space-between; color:var(--ink-3); padding-top:var(--space-1); }
-  .src { color:var(--ink-3); margin-top:var(--space-6); }
+  .axis { grid-column:2; border-top:var(--stroke-axis) solid var(--line-2); display:flex; justify-content:space-between; color:var(--ink-3); padding-top:var(--space-0\.5); }
+  .src { color:var(--ink-3); margin-top:var(--space-3); }
 </style>
 </head>
 <body>
-<div class="card">
+<div class="plate"><div class="card">
+  <div class="eyebrow eyebrow"><span class="sl">//</span> How designers learn</div>
   <h3 class="title display-md">Guidance is arriving bottom-up</h3>
   <div class="legend body-sm"><span><i class="sw s1"></i>2026</span><span><i class="sw s2"></i>2025</span></div>
   <div class="grid">
     <div class="lab hi title">Peers</div>
     <div class="plot"><div class="track">
-      <div class="bar now hi" style="width:80%"></div><span class="val now hi figure-md" style="left:80%">80%</span>
+      <div class="bar now hi" style="width:80%"></div><span class="val now hi figure-md semi" style="left:80%">80%</span>
       <div class="bar prior" style="width:24%"></div><span class="val prior figure-sm" style="left:24%">24%</span>
     </div></div>
     <div class="lab body-sm">Leadership</div>
@@ -56,6 +64,6 @@
     <div class="axis figure-sm"><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></div>
   </div>
   <div class="src body-sm">Source: Designer Fund and Foundation Capital, AI in Design 2026. n = 900+ designers.</div>
-</div>
+</div></div>
 </body>
 </html>

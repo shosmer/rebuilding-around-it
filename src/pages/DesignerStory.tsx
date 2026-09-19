@@ -2,6 +2,7 @@ import {VStack} from '@astryxdesign/core/VStack';
 import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
 import {Beat} from '../components/Beat';
+import {Eyebrow} from '../components/Eyebrow';
 import {BarList, FigurePair, PairedBars} from '../components/charts';
 import {builders, honest, judgment, weeklyUse} from '../data/report';
 
@@ -9,10 +10,8 @@ export function DesignerStory() {
   return (
     <VStack gap={10}>
       <VStack gap={3} maxWidth={680}>
-        <Text type="eyebrow" color="secondary">
-          For designers
-        </Text>
-        <Heading level={1} type="display-3" textWrap="balance">
+        <Eyebrow>For designers</Eyebrow>
+        <Heading level={1} textWrap="balance">
           The job grew. Here is the shape of it.
         </Heading>
         <Text as="p" type="large" color="secondary">

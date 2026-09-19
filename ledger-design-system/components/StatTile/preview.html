@@ -1,53 +1,58 @@
-<!-- @dsCard group="Evidence" height=280 -->
+<!-- @dsCard group="Evidence" height=300 -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>StatTile — preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,700..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
   html, body { margin:0; }
-  body { position:relative; min-height:100%; color:var(--ink); font-family:var(--font-sans); padding:var(--space-6);
-    background: radial-gradient(60% 50% at 85% 0%, var(--page-glow), transparent 70%), linear-gradient(180deg, var(--page-top), var(--page-bottom)); }
-  body::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply; background-size:240px 240px;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.098 0 0 0 0 0.094 0 0 0 0 0.082 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>"); }
-  [data-theme="dark"] body::before { opacity:.07; mix-blend-mode:screen;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.965 0 0 0 0 0.957 0 0 0 0 0.937 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>"); }
-  .card { position:relative; background:linear-gradient(180deg, var(--card-top), var(--card-bottom)); border:var(--stroke-hair) solid var(--line-1); border-radius:var(--radius-lg);
-    box-shadow: inset 0 1px 0 var(--card-highlight), var(--shadow-card); padding:var(--space-6); }
-  .row { display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-6); position:relative; }
-  .tile { display:flex; flex-direction:column; gap:var(--space-2); min-height:220px; }
+  body { position:relative; min-height:100%; color:var(--ink); font-family:var(--font-sans); padding:var(--space-4) var(--space-4) var(--space-5);
+    background: radial-gradient(55% 45% at 100% 0%, var(--page-glow), transparent 70%), radial-gradient(55% 45% at 0% 100%, var(--page-glow-2), transparent 70%), linear-gradient(180deg, var(--page-top), var(--page-bottom)); }
+  body::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.06; background-size:16px 16px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M0 12 L8 4 L16 12' fill='none' stroke='%230f1a19' stroke-width='1'/></svg>"); }
+  [data-theme="dark"] body::before { opacity:.09;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M0 12 L8 4 L16 12' fill='none' stroke='%23edf4f2' stroke-width='1'/></svg>"); }
+  .plate { position:relative; z-index:0; }
+  .plate::before { content:""; position:absolute; inset:0; z-index:-1; transform:translate(var(--offset-3d), var(--offset-3d)); background:var(--card-edge);
+    clip-path:polygon(0 0, calc(100% - var(--notch-lg)) 0, 100% var(--notch-lg), 100% 100%, 0 100%); }
+  .card { position:relative; background:linear-gradient(180deg, var(--card-top), var(--card-bottom)); border:var(--stroke-hair) solid var(--line-1); padding:var(--space-4);
+    clip-path:polygon(0 0, calc(100% - var(--notch-lg)) 0, 100% var(--notch-lg), 100% 100%, 0 100%); }
+  .wide { font-stretch:125%; } .semi { font-stretch:112%; }
   .eyebrow { color:var(--ink-3); text-transform:uppercase; }
-  .figure { color:var(--ink); position:relative; margin-top:var(--space-2); }
-  .tile.highlighted .figure { background:linear-gradient(135deg, var(--accent-deep), var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .tile.highlighted .figure::before { content:""; position:absolute; left:-8px; top:8px; width:60%; height:70%; background:var(--accent-glow); filter:blur(28px); z-index:-1; border-radius:var(--radius-xl); }
-  .change { color:var(--ink-2); margin-top:calc(-1 * var(--space-1)); }
-  .base { color:var(--ink-3); margin-top:auto; padding-top:var(--space-3); border-top:var(--stroke-hair) solid var(--line-1); }
+  .eyebrow .sl { color:var(--counter); }
+  .row { display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-4); }
+  .tile { display:flex; flex-direction:column; gap:var(--space-1); min-height:228px; }
+  .figure { color:var(--ink); position:relative; margin-top:var(--space-1); }
+  .tile.highlighted .figure { background:linear-gradient(var(--chevron-angle), var(--accent-deep), var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .tile.highlighted .figure::before { content:""; position:absolute; left:-6px; top:10px; width:55%; height:60%; background:var(--accent-glow); filter:blur(26px); z-index:-1; }
+  .change { color:var(--ink-2); }
+  .base { color:var(--ink-3); margin-top:auto; padding-top:var(--space-1); border-top:var(--stroke-hair) solid var(--line-1); }
 </style>
 </head>
 <body>
 <div class="row">
-  <div class="card tile highlighted">
-    <div class="eyebrow eyebrow">Weekly AI use</div>
-    <div class="figure figure-xl">91%</div>
+  <div class="plate"><div class="card tile highlighted">
+    <div class="eyebrow eyebrow"><span class="sl">//</span> Weekly AI use</div>
+    <div class="figure figure-xl wide">91%</div>
     <div class="change figure-sm">from 54% a year earlier</div>
     <div class="body">Weekly use of AI for design tasks is now near-universal.</div>
     <div class="base body-sm">n = 900+ designers, 60+ countries</div>
-  </div>
-  <div class="card tile">
-    <div class="eyebrow eyebrow">Daily use</div>
-    <div class="figure figure-xl">75%</div>
+  </div></div>
+  <div class="plate"><div class="card tile">
+    <div class="eyebrow eyebrow"><span class="sl">//</span> Daily use</div>
+    <div class="figure figure-xl wide">75%</div>
     <div class="body">Three in four designers use AI every working day.</div>
     <div class="base body-sm">n = 900+</div>
-  </div>
-  <div class="card tile">
-    <div class="eyebrow eyebrow">Tools in a stack</div>
-    <div class="figure figure-xl">7</div>
+  </div></div>
+  <div class="plate"><div class="card tile">
+    <div class="eyebrow eyebrow"><span class="sl">//</span> Tools in a stack</div>
+    <div class="figure figure-xl wide">7</div>
     <div class="change figure-sm">from 3</div>
     <div class="body">Off-the-shelf AI tools the average designer uses regularly.</div>
     <div class="base body-sm">n = 900+</div>
-  </div>
+  </div></div>
 </div>
 </body>
 </html>

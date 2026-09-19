@@ -4,6 +4,8 @@ import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
 import {ClickableCard} from '@astryxdesign/core/ClickableCard';
 import {PATHS} from '../router';
+import {Eyebrow} from '../components/Eyebrow';
+import {Plate} from '../components/Plate';
 
 const DOORS = [
   {
@@ -29,30 +31,31 @@ const DOORS = [
 export function Home() {
   return (
     <VStack gap={8}>
-      <VStack gap={4} maxWidth={680}>
-        <Text type="eyebrow" color="secondary">
-          A short read of the AI in Design 2026 report
-        </Text>
-        <Heading level={1} type="display-2" textWrap="balance">
-          In 2025 designers were experimenting with AI. In 2026 they are rebuilding around it.
+      <VStack gap={4} maxWidth={760}>
+        <Eyebrow>A short read of the AI in Design 2026 report</Eyebrow>
+        <Heading level={1} type="display-1" textWrap="balance">
+          Rebuilding around it.
         </Heading>
         <Text as="p" type="large" color="secondary">
-          That is the thesis of this year&rsquo;s AI in Design report, from a survey of 906 designers. I read
-          the whole thing so my team would not have to. Pick who you are.
+          In 2025 designers were experimenting with AI. In 2026 they are rebuilding around it. That is the
+          thesis of this year&rsquo;s AI in Design report, from a survey of 906 designers. I read the whole
+          thing so my team would not have to. Pick who you are.
         </Text>
       </VStack>
       <Grid columns={{minWidth: 240, max: 3}} gap={4}>
         {DOORS.map((d) => (
-          <ClickableCard key={d.href} href={d.href} label={d.label} elevation="low">
-            <VStack gap={2}>
-              <Heading level={2} accessibilityLevel={3}>
-                {d.title}
-              </Heading>
-              <Text as="p" color="secondary">
-                {d.teaser}
-              </Text>
-            </VStack>
-          </ClickableCard>
+          <Plate key={d.href}>
+            <ClickableCard href={d.href} label={d.label} padding={8}>
+              <VStack gap={2}>
+                <Heading level={2} accessibilityLevel={3}>
+                  {d.title}
+                </Heading>
+                <Text as="p" color="secondary">
+                  {d.teaser}
+                </Text>
+              </VStack>
+            </ClickableCard>
+          </Plate>
         ))}
       </Grid>
     </VStack>

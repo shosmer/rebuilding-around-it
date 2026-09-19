@@ -6,6 +6,7 @@ import {Card} from '@astryxdesign/core/Card';
 import {Text} from '@astryxdesign/core/Text';
 import {VisuallyHidden} from '@astryxdesign/core/VisuallyHidden';
 import type {Row} from '../data/report';
+import {Eyebrow} from './Eyebrow';
 
 /* Ledger evidence components on Astryx. The bar tracks are plain elements
    painted with theme tokens (see charts.css); everything else is Astryx. */
@@ -14,8 +15,8 @@ import type {Row} from '../data/report';
 export function ChartFrame({title, note, children}: {title: string; note?: string; children: ReactNode}) {
   return (
     <VStack gap={4} as="figure">
-      <VStack gap={0.5} as="figcaption">
-        <Text color="secondary">{title}</Text>
+      <VStack gap={1} as="figcaption">
+        <Eyebrow>{title}</Eyebrow>
         {note && (
           <Text type="supporting" color="secondary">
             {note}
@@ -42,13 +43,9 @@ export function StatTile({
   isHighlighted?: boolean;
 }) {
   return (
-    <Card padding={6}>
+    <Card padding={8}>
       <VStack gap={2}>
-        {eyebrow && (
-          <Text type="eyebrow" color="secondary">
-            {eyebrow}
-          </Text>
-        )}
+        {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
         <Text type="figure-xl" color={isHighlighted ? 'accent' : 'primary'}>
           {figure}
         </Text>

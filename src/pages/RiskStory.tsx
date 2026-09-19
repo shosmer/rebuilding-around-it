@@ -2,6 +2,7 @@ import {VStack} from '@astryxdesign/core/VStack';
 import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
 import {Beat} from '../components/Beat';
+import {Eyebrow} from '../components/Eyebrow';
 import {BarList, FigurePair} from '../components/charts';
 import {internalToolsBySize, ownership, support, supportForms, tinkering} from '../data/report';
 
@@ -9,10 +10,8 @@ export function RiskStory() {
   return (
     <VStack gap={10}>
       <VStack gap={3} maxWidth={680}>
-        <Text type="eyebrow" color="secondary">
-          For risk and operations leaders
-        </Text>
-        <Heading level={1} type="display-3" textWrap="balance">
+        <Eyebrow>For risk and operations leaders</Eyebrow>
+        <Heading level={1} textWrap="balance">
           Half of designers ship AI-written code. Most organizations have not decided what that means.
         </Heading>
         <Text as="p" type="large" color="secondary">
