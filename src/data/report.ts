@@ -70,3 +70,24 @@ export const policyGap: Row[] = [
 ];
 
 export const headcount = {reducedWithSameOutput: 19, keepOrGrow: 60};
+
+// Risk and operations story
+export const support = {moderateOrStrong: 87, strong: 53};
+
+export const internalToolsBySize: Row[] = [
+  {label: '1 to 50 employees', value: 26},
+  {label: '51 to 500', value: 34},
+  {label: '501 to 2,000', value: 48},
+  {label: '2,000 or more', value: 74},
+];
+
+export const ownership: Row[] = [
+  {label: 'Full ownership: the direction and judgment are mine', value: 40},
+  {label: 'Mostly mine, aware AI shaped some outcomes', value: 43},
+  {label: 'Shared: hard to separate my contribution from the tool', value: 9, isMuted: true},
+  {label: 'Uncertain, still working it out', value: 8, isMuted: true},
+];
+
+export const tinkering = {highSupport: 55, otherwise: 28};
+
+export const supportForms = {champions: 46, tinkeringTime: 25, training: 20, subscriptions: 16};
