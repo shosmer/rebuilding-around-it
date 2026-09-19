@@ -16,15 +16,15 @@ export function RiskStory() {
           Half of designers ship AI-written code. Most organizations have not decided what that means.
         </Heading>
         <Text as="p" type="large" color="secondary">
-          Five things from the 2026 AI in Design survey for anyone who owns risk, controls, or operations around
-          a product team. About three minutes. The survey measured designers, largely at technology companies,
-          and it shows correlation rather than cause. Read it as direction, not as a benchmark.
+          Five findings from the 2026 AI in Design survey, for anyone who owns risk, controls, or operations
+          around a product team. The survey measured designers at technology companies. Read it as direction,
+          not as a benchmark.
         </Text>
       </VStack>
 
       <Beat
         headline="Companies are backing this, not tolerating it."
-        soWhat="Adoption is sponsored. The control question is whether it runs inside a sanctioned path, with tools that are approved and paid for."
+        soWhat="Adoption is sponsored. The control question is whether it runs on a sanctioned path."
         visual={
           <FigurePair
             title="Organizational support for AI adoption"
@@ -35,14 +35,12 @@ export function RiskStory() {
             ]}
           />
         }>
-        Nearly nine in ten designers report at least moderate organizational support for AI adoption, and more
-        than half call it strong. The gap between early-stage startups and publicly traded companies that
-        existed a year ago has mostly closed.
+        Nine in ten designers report organizational support. More than half call it strong.
       </Beat>
 
       <Beat
         headline="Large companies answer with internal tools."
-        soWhat="An internal, controlled environment with the design system built in is how peers stayed compliant and current at the same time."
+        soWhat="A controlled internal environment is how peers stayed compliant and current at once."
         visual={
           <BarList
             title="Designers using internally built AI tools, by company size"
@@ -50,14 +48,12 @@ export function RiskStory() {
             rows={internalToolsBySize}
           />
         }>
-        Three quarters of designers at companies with more than 2,000 employees use internally built AI tools,
-        against a quarter at companies under 50. The report reads this as the enterprise answer to security and
-        compliance constraints: build inside the perimeter rather than wait for approval outside it.
+        Internal tool use rises with company size: the enterprise answer to security and compliance.
       </Beat>
 
       <Beat
         headline="Humans keep the decision."
-        soWhat="Accountability already sits with a person in practice. Writing it down, as a named owner and an audit trail, is the remaining step."
+        soWhat="Accountability already sits with a person. A named owner and an audit trail are the remaining step."
         visual={
           <BarList
             title="How designers describe ownership of AI-assisted work"
@@ -65,14 +61,12 @@ export function RiskStory() {
             rows={ownership}
           />
         }>
-        Asked who owns AI-assisted work, 83% of designers say the direction and judgment are theirs, fully or
-        mostly. Fewer than one in ten find it hard to separate their contribution from the tool&rsquo;s, and four
-        in five still make the final quality call themselves.
+        Most designers, 83%, say the judgment on AI-assisted work is theirs, fully or mostly.
       </Beat>
 
       <Beat
         headline="The support that works is structural."
-        soWhat="Sanctioned time and a named community are cheaper controls than a mandate, and they leave a record of what was tried."
+        soWhat="Sanctioned time and a named community are cheaper controls than a mandate."
         visual={
           <FigurePair
             title="A culture of tinkering follows organizational support"
@@ -83,42 +77,36 @@ export function RiskStory() {
             ]}
           />
         }>
-        At companies with strong support, more than half of designers describe a culture where everyone is
-        expected to build and experiment, against fewer than a third elsewhere. Those designers are also more
-        likely to say AI is part of their core workflow, to feel confident in their tools, and to ship code.
+        Strong support doubles the share of designers who describe a culture of tinkering.
       </Beat>
 
       <Beat
         headline="What this means for you."
-        soWhat="Three stories, one dataset. A number that appears in more than one is identical in both."
+        soWhat="Three stories, one dataset. A number in more than one is identical in both."
         isLast
         visual={
           <VStack gap={3} as="ol">
             <VStack as="li" gap={0}>
               <Text as="p">
-                <Text weight="semibold">Name the sanctioned default.</Text> One approved tool for the next two
-                planning cycles, one line on why, one line on what happens when it changes. Silence is what
-                produces unsanctioned use.
+                <Text weight="semibold">Name the sanctioned default.</Text> One approved tool for two planning
+                cycles, one line on why, one line on what happens when it changes.
               </Text>
             </VStack>
             <VStack as="li" gap={0}>
               <Text as="p">
                 <Text weight="semibold">Stand up a controlled non-production environment.</Text> Documented
-                access, no production data, the design system built in. It is where prototypes get validated
-                before anything reaches a ticket, which is also where changes are cheapest.
+                access, no production data, the design system built in.
               </Text>
             </VStack>
             <VStack as="li" gap={0}>
               <Text as="p">
                 <Text weight="semibold">Write the oversight standard for one real touchpoint.</Text> A named
-                accountable owner, what a person sees, checks, and can override, and evidence an auditor could
-                test. One completed example does more than a framework nobody has applied.
+                owner, what a person sees, checks, and can override, and evidence an auditor could test.
               </Text>
             </VStack>
           </VStack>
         }>
-        The findings above describe designers, not regulated institutions, and they show correlation rather
-        than cause. Read with that in mind, three things a control owner can act on now.
+        Three things a control owner can act on now.
       </Beat>
     </VStack>
   );

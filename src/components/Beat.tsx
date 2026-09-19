@@ -1,5 +1,4 @@
 import type {ReactNode} from 'react';
-import {Grid} from '@astryxdesign/core/Grid';
 import {VStack} from '@astryxdesign/core/VStack';
 import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
@@ -7,21 +6,22 @@ import {Divider} from '@astryxdesign/core/Divider';
 
 type BeatProps = {
   headline: string;
-  children: ReactNode; // one sentence of story
+  children: ReactNode; // one short sentence
   visual: ReactNode;
   soWhat: string;
   isLast?: boolean;
 };
 
+/* The visual carries the beat. Text takes the narrow track (see .beat in charts.css). */
 export function Beat({headline, children, visual, soWhat, isLast}: BeatProps) {
   return (
     <VStack gap={6}>
-      <Grid columns={{minWidth: 300, max: 2}} gap={6} align="start">
-        <VStack gap={3}>
+      <section className="beat">
+        <VStack gap={2}>
           <Heading level={2} textWrap="balance">
             {headline}
           </Heading>
-          <Text as="p" type="large" color="secondary">
+          <Text as="p" color="secondary">
             {children}
           </Text>
           <Text as="p" weight="semibold">
@@ -29,7 +29,7 @@ export function Beat({headline, children, visual, soWhat, isLast}: BeatProps) {
           </Text>
         </VStack>
         {visual}
-      </Grid>
+      </section>
       {!isLast && <Divider />}
     </VStack>
   );

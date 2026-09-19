@@ -3,6 +3,19 @@
    Ledger rules: thin marks, square at the baseline, radius-sm on the free end,
    a surface-colored gap between neighbors, text never in the series color. */
 @layer site {
+  /* Beat layout: text on the narrow track, the visual on the wide one. */
+  .beat {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: var(--spacing-8);
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .beat {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--spacing-5);
+    }
+  }
   .bar-track {
     flex: 1 1 0;
     min-inline-size: 0;

@@ -37,9 +37,8 @@ export function Home() {
           In 2025 designers were experimenting with AI. In 2026 they are rebuilding around it.
         </Heading>
         <Text as="p" type="large" color="secondary">
-          That is the thesis of this year&rsquo;s AI in Design report, built on a survey of 906 designers. I
-          read the whole thing so my team would not have to. Five beats per audience: what is going on, and
-          why it matters to you.
+          That is the thesis of this year&rsquo;s AI in Design report, from a survey of 906 designers. I read
+          the whole thing so my team would not have to. Pick who you are.
         </Text>
       </VStack>
       <Grid columns={{minWidth: 240, max: 3}} gap={4}>

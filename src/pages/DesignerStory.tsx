@@ -16,14 +16,13 @@ export function DesignerStory() {
           The job grew. Here is the shape of it.
         </Heading>
         <Text as="p" type="large" color="secondary">
-          Five things from the 2026 AI in Design survey worth knowing if you design digital products for a
-          living. About three minutes.
+          Five findings from the 2026 AI in Design survey, for people who design digital products.
         </Text>
       </VStack>
 
       <Beat
         headline="Almost everyone is using it now."
-        soWhat="This is the baseline. The interesting question is what you do with it."
+        soWhat="This is the baseline now."
         visual={
           <FigurePair
             title="Designers using AI in their work at least weekly"
@@ -34,8 +33,7 @@ export function DesignerStory() {
             ]}
           />
         }>
-        In one year, weekly AI use in design work went from about half of designers to nine in ten. It shows
-        up at every stage of the process now, from ideation through handoff.
+        Weekly use went from about half of designers to nine in ten in one year.
       </Beat>
 
       <Beat
@@ -48,8 +46,7 @@ export function DesignerStory() {
             rows={judgment}
           />
         }>
-        Asked where they trust their own craft over the tool, designers put final polish, creative direction,
-        and understanding users at the top. Four in five said the quality call is theirs.
+        Polish, creative direction, and understanding users stay with the designer.
       </Beat>
 
       <Beat
@@ -58,19 +55,18 @@ export function DesignerStory() {
         visual={
           <PairedBars
             title="Compared with before AI, designers now feel..."
-            note="Designers who prototype and code with AI versus those who do not."
+            note="Designers who prototype and code with AI versus those who do not. n = 906."
             legend={builders.legend}
             rows={builders.rows}
           />
         }>
-        Designers who prototype and code with AI were two and a half times more likely to say they feel more
-        creative and capable, and twice as likely to feel confident in their tools. They also report a higher
-        quality bar (in a good way).
+        Designers who prototype and code with AI are two and a half times more likely to feel more creative
+        and capable.
       </Beat>
 
       <Beat
         headline="The honest part."
-        soWhat="The tools are single-player by default. Pairing and critique have to be put back on purpose."
+        soWhat="The tools are single-player by default. Put pairing and critique back on purpose."
         visual={
           <FigurePair
             title="Two numbers that did not move together"
@@ -87,38 +83,35 @@ export function DesignerStory() {
             ]}
           />
         }>
-        Four times as many designers say collaboration got worse than said so a year ago. Expectations rose
-        for most, and the rubrics mostly did not.
+        Collaboration got worse for four times as many designers. Expectations rose faster than the rubrics.
       </Beat>
 
       <Beat
         headline="What this means for you."
-        soWhat="More soon: the same five beats for the people you work with."
+        soWhat="Next: what the people you work with are hearing."
         isLast
         visual={
           <VStack gap={3} as="ol">
             <VStack as="li" gap={0}>
               <Text as="p">
-              <Text weight="semibold">Keep the judgment visible.</Text> Write the rationale. Run the critique. Say
-              out loud what &ldquo;good enough&rdquo; means for this screen.
-            </Text>
+                <Text weight="semibold">Keep the judgment visible.</Text> Write the rationale. Run the critique.
+              </Text>
             </VStack>
             <VStack as="li" gap={0}>
               <Text as="p">
-              <Text weight="semibold">Build one small thing.</Text> A prototype that breaks in front of a
-              teammate is the assignment. That is where the confidence in the chart above comes from.
-            </Text>
+                <Text weight="semibold">Build one small thing.</Text> A prototype that breaks in front of a
+                teammate is the assignment.
+              </Text>
             </VStack>
             <VStack as="li" gap={0}>
               <Text as="p">
-              <Text weight="semibold">Put collaboration back on the calendar.</Text> Pair on a build. Critique
-              the running prototype instead of the static screen. The tools will not do this for you.
-            </Text>
+                <Text weight="semibold">Put collaboration on the calendar.</Text> Pair on a build. Critique the
+                running prototype.
+              </Text>
             </VStack>
           </VStack>
         }>
-        The data says the field moved and your judgment did not get less valuable. Three things I am asking of
-        my own team, offered here in case they are useful to yours.
+        Three things I am asking of my own team.
       </Beat>
     </VStack>
   );
