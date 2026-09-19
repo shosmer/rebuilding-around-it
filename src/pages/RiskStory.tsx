@@ -34,9 +34,8 @@ export function RiskStory() {
               {figure: `${support.strong}%`, label: 'call it strong: dedicated budget, active encouragement, formal programs'},
             ]}
           />
-        }>
-        Nine in ten designers report organizational support. More than half call it strong.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="Large companies answer with internal tools."
@@ -47,9 +46,8 @@ export function RiskStory() {
             note="Share of designers within each group. n = 906."
             rows={internalToolsBySize}
           />
-        }>
-        Internal tool use rises with company size: the enterprise answer to security and compliance.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="Humans keep the decision."
@@ -60,9 +58,8 @@ export function RiskStory() {
             note="Single-select. n = 906."
             rows={ownership}
           />
-        }>
-        Most designers, 83%, say the judgment on AI-assisted work is theirs, fully or mostly.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="The support that works is structural."
@@ -76,9 +73,8 @@ export function RiskStory() {
               {figure: `${tinkering.otherwise}%`, label: 'at companies with moderate or minimal support', tone: 'muted'},
             ]}
           />
-        }>
-        Strong support doubles the share of designers who describe a culture of tinkering.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="What this means for you."
@@ -105,9 +101,8 @@ export function RiskStory() {
               </Text>
             </VStack>
           </VStack>
-        }>
-        Three things a control owner can act on now.
-      </Beat>
+        }
+      />
     </VStack>
   );
 }

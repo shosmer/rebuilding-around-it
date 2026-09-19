@@ -10,22 +10,20 @@ import type {Row} from '../data/report';
 /* Ledger evidence components on Astryx. The bar tracks are plain elements
    painted with theme tokens (see charts.css); everything else is Astryx. */
 
-/** ChartFrame: a Ledger chart panel. surface-1, hairline edge, radius-lg. */
+/** ChartFrame: what is measured, its base, and the marks. The Beat's card holds it. */
 export function ChartFrame({title, note, children}: {title: string; note?: string; children: ReactNode}) {
   return (
-    <Card padding={6}>
-      <VStack gap={4} as="figure">
-        <VStack gap={0.5} as="figcaption">
-          <Text weight="semibold">{title}</Text>
-          {note && (
-            <Text type="supporting" color="secondary">
-              {note}
-            </Text>
-          )}
-        </VStack>
-        {children}
+    <VStack gap={4} as="figure">
+      <VStack gap={0.5} as="figcaption">
+        <Text color="secondary">{title}</Text>
+        {note && (
+          <Text type="supporting" color="secondary">
+            {note}
+          </Text>
+        )}
       </VStack>
-    </Card>
+      {children}
+    </VStack>
   );
 }
 

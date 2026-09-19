@@ -54,14 +54,18 @@
   /* Beat layout: text on the narrow track, the visual on the wide one. */
   .beat {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     gap: var(--spacing-8);
     align-items: start;
   }
   @media (max-width: 760px) {
     .beat {
       grid-template-columns: minmax(0, 1fr);
-      gap: var(--spacing-5);
+      gap: var(--spacing-4);
+    }
+    .beat > :first-child {
+      order: 2;
+      padding-block-start: 0;
     }
   }
 

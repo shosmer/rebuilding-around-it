@@ -33,9 +33,8 @@ export function LeaderStory() {
               {figure: `${prototypes.startWith}%`, label: 'say projects now start with a working prototype'},
             ]}
           />
-        }>
-        Four in ten designers say prototypes or real code are now the expected deliverable.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="Designers ship."
@@ -46,9 +45,8 @@ export function LeaderStory() {
             note={`By company stage. Founders ${shipped.byRole.founders}%, executives and managers ${shipped.byRole.executivesAndManagers}%, individual contributors ${shipped.byRole.ics}%. n = 906.`}
             rows={shipped.byStage}
           />
-        }>
-        Half of designers have shipped AI-generated code. Only a fifth call themselves design engineers.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="Quality gets encoded, not inspected."
@@ -62,9 +60,8 @@ export function LeaderStory() {
               {figure: `${quality.challenge}%`, label: 'say unreliable or inconsistent output is their top challenge'},
             ]}
           />
-        }>
-        Reliable output is the top reason a tool sticks and the top complaint.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="Velocity outran the org."
@@ -75,9 +72,8 @@ export function LeaderStory() {
             note="Expectations: all designers. Policy changes: design leaders only, multi-select. n = 906."
             rows={policyGap}
           />
-        }>
-        Expectations rose for nearly three quarters of designers. Formal policy changed for few.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="What this means for you."
@@ -105,9 +101,8 @@ export function LeaderStory() {
               </Text>
             </VStack>
           </VStack>
-        }>
-        Three decisions, in the order they come up.
-      </Beat>
+        }
+      />
     </VStack>
   );
 }

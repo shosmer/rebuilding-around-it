@@ -32,9 +32,8 @@ export function DesignerStory() {
               {figure: `${weeklyUse.now}%`, label: '2026', isHero: true},
             ]}
           />
-        }>
-        Weekly use went from about half of designers to nine in ten in one year.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="The judgment still belongs to you."
@@ -45,9 +44,8 @@ export function DesignerStory() {
             note="Share of respondents, multi-select. n = 906."
             rows={judgment}
           />
-        }>
-        Polish, creative direction, and understanding users stay with the designer.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="Designers who build feel better about the work."
@@ -59,10 +57,8 @@ export function DesignerStory() {
             legend={builders.legend}
             rows={builders.rows}
           />
-        }>
-        Designers who prototype and code with AI are two and a half times more likely to feel more creative
-        and capable.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="The honest part."
@@ -82,9 +78,8 @@ export function DesignerStory() {
               },
             ]}
           />
-        }>
-        Collaboration got worse for four times as many designers. Expectations rose faster than the rubrics.
-      </Beat>
+        }
+      />
 
       <Beat
         headline="What this means for you."
@@ -110,9 +105,8 @@ export function DesignerStory() {
               </Text>
             </VStack>
           </VStack>
-        }>
-        Three things I am asking of my own team.
-      </Beat>
+        }
+      />
     </VStack>
   );
 }
