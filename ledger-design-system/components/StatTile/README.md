@@ -4,12 +4,12 @@ A single headline figure with its finding and base, used where the number itself
 
 ## Anatomy
 
-- Container: `surface-1`, `stroke-hair` edge in `line-1`, `radius-lg`, padding `space-6` (`space-4` under 600px).
+- Container: a card: `card-top` to `card-bottom` at 180deg, `stroke-hair` edge in `line-1`, `radius-lg`, `shadow-card` with the inset `card-highlight` top edge, padding `space-6` (`space-4` under 600px).
 - Eyebrow (optional): `eyebrow` in `ink-3`, the audience or the metric family ("WEEKLY AI USE").
-- Figure: `figure-xl` in `ink`. A highlighted tile, at most one per row, sets the figure in `accent`.
+- Figure: `figure-xl` in `ink`. A highlighted tile, at most one per row, sets the figure in the accent gradient (`accent-deep` to `accent` at 135deg, background-clip text) with a blurred `accent-glow` halo behind it.
 - Change (optional): `figure-sm` in `ink-2`, "from 54%", set `space-1` under the figure. A change is words and a number, never an arrow glyph alone.
 - Finding: `body` in `ink`, one sentence, the claim the number supports.
-- Base: `body-sm` in `ink-3`, "n = 900+ designers".
+- Base: `body-sm` in `ink-3`, "n = 900+ designers", pinned to the bottom above a `stroke-hair` rule in `line-1`.
 
 ## The consumer provides
 

@@ -93,18 +93,24 @@ export const ledgerTheme = defineTheme({
     '--color-error-muted': ['#a8322626', '#f08a7e33'],
     '--color-on-error': t(onAccent),
 
-    // Elevation: borders, not shadows. The one shadow is for things that float.
-    '--shadow-low': 'none',
-    '--shadow-med': 'none',
-    '--shadow-high': ['0 4px 16px rgba(25, 24, 21, 0.14)', '0 4px 16px rgba(0, 0, 0, 0.5)'],
-    '--color-shadow': ['rgba(25, 24, 21, 0.14)', 'rgba(0, 0, 0, 0.5)'],
+    // Elevation, three levels: rest (shadow-card), lift (shadow-card-hover), float.
+    '--shadow-low': [
+      '0 1px 2px rgba(25, 24, 21, 0.06), 0 16px 40px -16px rgba(25, 24, 21, 0.28)',
+      '0 1px 2px rgba(0, 0, 0, 0.4), 0 20px 48px -16px rgba(0, 0, 0, 0.7)',
+    ],
+    '--shadow-med': [
+      '0 2px 4px rgba(25, 24, 21, 0.06), 0 28px 56px -20px rgba(25, 24, 21, 0.36)',
+      '0 2px 4px rgba(0, 0, 0, 0.4), 0 32px 64px -20px rgba(0, 0, 0, 0.8)',
+    ],
+    '--shadow-high': ['0 8px 28px rgba(25, 24, 21, 0.18)', '0 8px 28px rgba(0, 0, 0, 0.6)'],
+    '--color-shadow': ['rgba(25, 24, 21, 0.18)', 'rgba(0, 0, 0, 0.6)'],
 
-    // Radii: square-shouldered
+    // Radii: radius-sm 3, radius-md 6, radius-lg 14, radius-xl 22. No pills.
     '--radius-inner': '3px',
     '--radius-element': '6px',
-    '--radius-container': '10px',
-    '--radius-page': '10px',
-    '--radius-chat': '10px',
+    '--radius-container': '14px',
+    '--radius-page': '22px',
+    '--radius-chat': '22px',
 
     // Type scale: Ledger's named styles on Astryx's semantic tokens
     '--text-display-1-size': '64px',
@@ -146,7 +152,22 @@ export const ledgerTheme = defineTheme({
     '--ledger-div-neg': ['#c95f14', '#d57a3a'],
     '--ledger-div-mid': ['#c9c3b8', '#5a554d'],
     '--ledger-div-pos': ['#0d8f83', '#2ea699'],
-    '--ledger-bar-thickness': '20px',
+    '--ledger-series-1-deep': ['#0a6d63', '#1a8a7e'],
+    '--ledger-series-2-deep': ['#a04a0e', '#b85f27'],
+    '--ledger-series-3-deep': ['#513a9e', '#7a67c4'],
+    '--ledger-accent-deep': ['#083f3d', '#b2ebe5'],
+    '--ledger-accent-glow': ['#0d8f8352', '#2ea69966'],
+    '--ledger-page-top': ['#faf8f3', '#1d1c19'],
+    '--ledger-page-bottom': ['#ebe5d9', '#121110'],
+    '--ledger-page-glow': ['#0e5a5729', '#7fd0c824'],
+    '--ledger-card-top': ['#ffffff', '#2a2723'],
+    '--ledger-card-bottom': ['#f7f3ec', '#1e1c19'],
+    '--ledger-card-highlight': ['#ffffffcc', '#ffffff14'],
+    '--ledger-shadow-glow': [
+      '0 0 0 1px #0d8f8333, 0 8px 28px -4px #0d8f8352',
+      '0 0 0 1px #2ea69944, 0 8px 32px -4px #2ea69966',
+    ],
+    '--ledger-bar-thickness': '24px',
     '--ledger-measure': '68ch',
   },
 
@@ -164,8 +185,8 @@ export const ledgerTheme = defineTheme({
       // Numbers wear the mono. Never set a statistic in the serif.
       'type:figure-xl': {
         fontFamily: 'var(--font-family-code)',
-        fontSize: '56px',
-        lineHeight: '56px',
+        fontSize: '72px',
+        lineHeight: '72px',
         fontWeight: 'var(--font-weight-medium)',
         letterSpacing: '-0.02em',
         fontVariantNumeric: 'tabular-nums',
@@ -195,11 +216,26 @@ export const ledgerTheme = defineTheme({
     button: {
       base: {borderRadius: 'var(--radius-element)'},
     },
+    // A card is card-top to card-bottom, a hairline edge, shadow-card, and an
+    // inset highlight along its top edge.
     card: {
-      base: {borderRadius: 'var(--radius-container)'},
+      base: {
+        borderRadius: 'var(--radius-container)',
+        backgroundImage: 'linear-gradient(180deg, var(--ledger-card-top), var(--ledger-card-bottom))',
+        boxShadow: 'inset 0 1px 0 var(--ledger-card-highlight), var(--shadow-low)',
+      },
     },
     'clickable-card': {
-      base: {borderRadius: 'var(--radius-container)'},
+      base: {
+        borderRadius: 'var(--radius-container)',
+        backgroundImage: 'linear-gradient(180deg, var(--ledger-card-top), var(--ledger-card-bottom))',
+        boxShadow: 'inset 0 1px 0 var(--ledger-card-highlight), var(--shadow-low)',
+        transition: 'box-shadow var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard)',
+        ':hover': {
+          boxShadow: 'inset 0 1px 0 var(--ledger-card-highlight), var(--shadow-med)',
+          transform: 'translateY(-2px)',
+        },
+      },
     },
   },
 });

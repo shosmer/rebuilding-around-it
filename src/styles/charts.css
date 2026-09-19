@@ -1,8 +1,56 @@
-/* Chart marks. Layout and text come from Astryx components; these rules only
-   paint the bars, using Ledger tokens so they follow light and dark mode.
-   Ledger rules: thin marks, square at the baseline, radius-sm on the free end,
-   a surface-colored gap between neighbors, text never in the series color. */
+/* Ledger surfaces and chart marks. Layout and text come from Astryx
+   components; these rules paint the page ground, the grain, and the bars,
+   using Ledger tokens so they follow light and dark mode. */
 @layer site {
+  /* The page is not flat: a warm gradient with a radial accent glow top-right,
+     and a fine SVG grain over everything. surface-0 stays the flat fallback. */
+  html {
+    background: var(--ledger-page-bottom, var(--color-background-body));
+  }
+  body {
+    position: relative;
+    min-block-size: 100dvh;
+    background:
+      radial-gradient(60% 50% at 85% 0%, var(--ledger-page-glow), transparent 70%),
+      linear-gradient(180deg, var(--ledger-page-top), var(--ledger-page-bottom));
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-size: 240px 240px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.098 0 0 0 0 0.094 0 0 0 0 0.082 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+  }
+  @media (prefers-color-scheme: dark) {
+    body::before {
+      opacity: 0.07;
+      mix-blend-mode: screen;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.965 0 0 0 0 0.957 0 0 0 0 0.937 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+    }
+  }
+  /* Let the ground show through the shell. */
+  #root,
+  .astryx-app-shell,
+  [data-astryx-theme] {
+    background-color: transparent;
+  }
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+  @media print, (forced-colors: active) {
+    body {
+      background: var(--color-background-body);
+    }
+    body::before {
+      display: none;
+    }
+  }
+
   /* Beat layout: text on the narrow track, the visual on the wide one. */
   .beat {
     display: grid;
@@ -16,28 +64,37 @@
       gap: var(--spacing-5);
     }
   }
+
+  /* Bars: thin, square at the baseline, rounded on the free end, filled
+     along their length from the deep step to the series color. The track is
+     surface-2 with an inset hairline. The one highlighted bar glows. */
   .bar-track {
     flex: 1 1 0;
     min-inline-size: 0;
     position: relative;
     block-size: var(--ledger-bar-thickness);
     background: var(--color-background-muted);
+    box-shadow: inset 0 0 0 1px var(--color-border);
     border-radius: 0 var(--radius-inner) var(--radius-inner) 0;
-    overflow: hidden;
   }
   .bar-fill {
     position: absolute;
     inset: 0 auto 0 0;
     inline-size: calc(var(--v) * 1%);
-    background: var(--ledger-series-1);
+    background: linear-gradient(90deg, var(--ledger-series-1-deep), var(--ledger-series-1));
     border-radius: 0 var(--radius-inner) var(--radius-inner) 0;
-    transition: inline-size var(--duration-medium) var(--ease-standard);
+    transition:
+      inline-size var(--duration-medium) var(--ease-standard),
+      box-shadow var(--duration-fast) var(--ease-standard) var(--duration-medium);
   }
   .bar-fill[data-series='b'] {
-    background: var(--ledger-series-2);
+    background: linear-gradient(90deg, var(--ledger-series-2-deep), var(--ledger-series-2));
   }
   .bar-fill[data-series='muted'] {
     background: var(--ledger-series-muted);
+  }
+  .bar-fill[data-glow='true'] {
+    box-shadow: var(--ledger-shadow-glow);
   }
   .bar-pair {
     flex: 1 1 0;
@@ -48,7 +105,7 @@
   .bar-pair .bar-track {
     flex: none;
     inline-size: 100%;
-    block-size: 14px;
+    block-size: 16px;
   }
   .bar-label {
     flex: 0 0 auto;
@@ -60,14 +117,43 @@
     inline-size: var(--spacing-3);
     block-size: var(--spacing-3);
     border-radius: var(--radius-inner);
-    background: var(--ledger-series-1);
+    background: linear-gradient(90deg, var(--ledger-series-1-deep), var(--ledger-series-1));
   }
   .legend-swatch[data-series='b'] {
-    background: var(--ledger-series-2);
+    background: linear-gradient(90deg, var(--ledger-series-2-deep), var(--ledger-series-2));
   }
+
+  /* The hero figure: accent gradient as text with a blurred accent-glow halo.
+     One per page. */
+  .figure-hero {
+    position: relative;
+    display: inline-block;
+  }
+  .figure-hero::before {
+    content: '';
+    position: absolute;
+    inset: 12% -8px 0 -8px;
+    inline-size: 60%;
+    block-size: 70%;
+    background: var(--ledger-accent-glow);
+    filter: blur(28px);
+    border-radius: var(--radius-page);
+    z-index: -1;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .bar-fill {
       transition: none;
     }
   }
+}
+
+/* Unlayered on purpose: the Text element carries unlayered StyleX classes that
+   set its background, and only an unlayered rule can win against them. */
+.figure-hero .astryx-text {
+  background-image: linear-gradient(135deg, var(--ledger-accent-deep), var(--color-text-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-text-accent);
 }

@@ -30,7 +30,7 @@ export function RiskStory() {
             title="Organizational support for AI adoption"
             note="Share of designers. n = 906."
             items={[
-              {figure: `${support.moderateOrStrong}%`, label: 'report at least moderate support from their organization'},
+              {figure: `${support.moderateOrStrong}%`, label: 'report at least moderate support from their organization', isHero: true},
               {figure: `${support.strong}%`, label: 'call it strong: dedicated budget, active encouragement, formal programs'},
             ]}
           />

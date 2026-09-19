@@ -29,7 +29,7 @@ export function DesignerStory() {
             note={`${weeklyUse.daily}% use it daily. n = 906.`}
             items={[
               {figure: `${weeklyUse.prior}%`, label: '2025', tone: 'muted'},
-              {figure: `${weeklyUse.now}%`, label: '2026'},
+              {figure: `${weeklyUse.now}%`, label: '2026', isHero: true},
             ]}
           />
         }>

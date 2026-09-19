@@ -118,15 +118,15 @@ export const ledgerTheme = {
     "--color-error": "light-dark(#a83226, #f08a7e)",
     "--color-error-muted": "light-dark(#a8322626, #f08a7e33)",
     "--color-on-error": "light-dark(#ffffff, #0f2725)",
-    "--shadow-low": "none",
-    "--shadow-med": "none",
-    "--shadow-high": "light-dark(0 4px 16px rgba(25, 24, 21, 0.14), 0 4px 16px rgba(0, 0, 0, 0.5))",
-    "--color-shadow": "light-dark(rgba(25, 24, 21, 0.14), rgba(0, 0, 0, 0.5))",
+    "--shadow-low": "light-dark(0 1px 2px rgba(25, 24, 21, 0.06), 0 16px 40px -16px rgba(25, 24, 21, 0.28), 0 1px 2px rgba(0, 0, 0, 0.4), 0 20px 48px -16px rgba(0, 0, 0, 0.7))",
+    "--shadow-med": "light-dark(0 2px 4px rgba(25, 24, 21, 0.06), 0 28px 56px -20px rgba(25, 24, 21, 0.36), 0 2px 4px rgba(0, 0, 0, 0.4), 0 32px 64px -20px rgba(0, 0, 0, 0.8))",
+    "--shadow-high": "light-dark(0 8px 28px rgba(25, 24, 21, 0.18), 0 8px 28px rgba(0, 0, 0, 0.6))",
+    "--color-shadow": "light-dark(rgba(25, 24, 21, 0.18), rgba(0, 0, 0, 0.6))",
     "--radius-inner": "3px",
     "--radius-element": "6px",
-    "--radius-container": "10px",
-    "--radius-page": "10px",
-    "--radius-chat": "10px"
+    "--radius-container": "14px",
+    "--radius-page": "22px",
+    "--radius-chat": "22px"
   },
   localTokens: {
     "--ledger-series-1": "light-dark(#0d8f83, #2ea699)",
@@ -137,7 +137,19 @@ export const ledgerTheme = {
     "--ledger-div-neg": "light-dark(#c95f14, #d57a3a)",
     "--ledger-div-mid": "light-dark(#c9c3b8, #5a554d)",
     "--ledger-div-pos": "light-dark(#0d8f83, #2ea699)",
-    "--ledger-bar-thickness": "20px",
+    "--ledger-series-1-deep": "light-dark(#0a6d63, #1a8a7e)",
+    "--ledger-series-2-deep": "light-dark(#a04a0e, #b85f27)",
+    "--ledger-series-3-deep": "light-dark(#513a9e, #7a67c4)",
+    "--ledger-accent-deep": "light-dark(#083f3d, #b2ebe5)",
+    "--ledger-accent-glow": "light-dark(#0d8f8352, #2ea69966)",
+    "--ledger-page-top": "light-dark(#faf8f3, #1d1c19)",
+    "--ledger-page-bottom": "light-dark(#ebe5d9, #121110)",
+    "--ledger-page-glow": "light-dark(#0e5a5729, #7fd0c824)",
+    "--ledger-card-top": "light-dark(#ffffff, #2a2723)",
+    "--ledger-card-bottom": "light-dark(#f7f3ec, #1e1c19)",
+    "--ledger-card-highlight": "light-dark(#ffffffcc, #ffffff14)",
+    "--ledger-shadow-glow": "light-dark(0 0 0 1px #0d8f8333, 0 8px 28px -4px #0d8f8352, 0 0 0 1px #2ea69944, 0 8px 32px -4px #2ea69966)",
+    "--ledger-bar-thickness": "24px",
     "--ledger-measure": "68ch"
   },
   __localTokenOwners: {
@@ -149,6 +161,18 @@ export const ledgerTheme = {
     "--ledger-div-neg": "ledger",
     "--ledger-div-mid": "ledger",
     "--ledger-div-pos": "ledger",
+    "--ledger-series-1-deep": "ledger",
+    "--ledger-series-2-deep": "ledger",
+    "--ledger-series-3-deep": "ledger",
+    "--ledger-accent-deep": "ledger",
+    "--ledger-accent-glow": "ledger",
+    "--ledger-page-top": "ledger",
+    "--ledger-page-bottom": "ledger",
+    "--ledger-page-glow": "ledger",
+    "--ledger-card-top": "ledger",
+    "--ledger-card-bottom": "ledger",
+    "--ledger-card-highlight": "ledger",
+    "--ledger-shadow-glow": "ledger",
     "--ledger-bar-thickness": "ledger",
     "--ledger-measure": "ledger"
   },
@@ -258,8 +282,8 @@ export const ledgerTheme = {
       },
       "type:figure-xl": {
         "fontFamily": "var(--font-family-code)",
-        "fontSize": "56px",
-        "lineHeight": "56px",
+        "fontSize": "72px",
+        "lineHeight": "72px",
         "fontWeight": "var(--font-weight-medium)",
         "letterSpacing": "-0.02em",
         "fontVariantNumeric": "tabular-nums"
@@ -286,12 +310,21 @@ export const ledgerTheme = {
     },
     "card": {
       "base": {
-        "borderRadius": "var(--radius-container)"
+        "borderRadius": "var(--radius-container)",
+        "backgroundImage": "linear-gradient(180deg, var(--ledger-card-top), var(--ledger-card-bottom))",
+        "boxShadow": "inset 0 1px 0 var(--ledger-card-highlight), var(--shadow-low)"
       }
     },
     "clickable-card": {
       "base": {
-        "borderRadius": "var(--radius-container)"
+        "borderRadius": "var(--radius-container)",
+        "backgroundImage": "linear-gradient(180deg, var(--ledger-card-top), var(--ledger-card-bottom))",
+        "boxShadow": "inset 0 1px 0 var(--ledger-card-highlight), var(--shadow-low)",
+        "transition": "box-shadow var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard)",
+        ":hover": {
+          "boxShadow": "inset 0 1px 0 var(--ledger-card-highlight), var(--shadow-med)",
+          "transform": "translateY(-2px)"
+        }
       }
     }
   },

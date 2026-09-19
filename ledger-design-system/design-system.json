@@ -19,7 +19,7 @@
   "lastChange": {
     "by": "Shanny",
     "via": "Cowork",
-    "at": "2026-09-18T19:51:33Z",
-    "note": "Created Ledger: a data-forward Astryx theme with light and dark tokens, chart rules, audience guidance, StatTile and ComparisonBar."
+    "at": "2026-09-19T00:18:52Z",
+    "note": "Added depth: page gradient with grain, card gradients with shadow-card, gradient bar fills and a glow on the highlighted mark; radius-lg 14, radius-xl 22, figure-xl 72."
   }
 }

@@ -29,7 +29,7 @@ export function LeaderStory() {
             title="Working prototypes have replaced static mockups"
             note="Share of designers. n = 906."
             items={[
-              {figure: `${prototypes.expected}%`, label: 'say their company now expects working prototypes or real code'},
+              {figure: `${prototypes.expected}%`, label: 'say their company now expects working prototypes or real code', isHero: true},
               {figure: `${prototypes.startWith}%`, label: 'say projects now start with a working prototype'},
             ]}
           />

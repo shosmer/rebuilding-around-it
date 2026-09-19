@@ -13,7 +13,7 @@ import type {Row} from '../data/report';
 /** ChartFrame: a Ledger chart panel. surface-1, hairline edge, radius-lg. */
 export function ChartFrame({title, note, children}: {title: string; note?: string; children: ReactNode}) {
   return (
-    <Card padding={5}>
+    <Card padding={6}>
       <VStack gap={4} as="figure">
         <VStack gap={0.5} as="figcaption">
           <Text weight="semibold">{title}</Text>
@@ -44,7 +44,7 @@ export function StatTile({
   isHighlighted?: boolean;
 }) {
   return (
-    <Card padding={5}>
+    <Card padding={6}>
       <VStack gap={2}>
         {eyebrow && (
           <Text type="eyebrow" color="secondary">
@@ -66,6 +66,8 @@ export function StatTile({
 }
 
 export function BarList({title, rows, note}: {title: string; rows: Row[]; note?: string}) {
+  // When one bar is the point (some rows muted), the un-muted bars glow.
+  const hasHighlight = rows.some((r) => r.isMuted);
   return (
     <ChartFrame title={title} note={note}>
       <VStack gap={2} as="ul">
@@ -76,7 +78,7 @@ export function BarList({title, rows, note}: {title: string; rows: Row[]; note?:
                 {r.label}
               </Text>
             </span>
-            <Track value={r.value} series={r.isMuted ? 'muted' : undefined} />
+            <Track value={r.value} series={r.isMuted ? 'muted' : undefined} isGlow={hasHighlight && !r.isMuted} />
             <Text type="figure-sm" color={r.isMuted ? 'secondary' : 'primary'}>
               {r.value}%
             </Text>
@@ -144,7 +146,10 @@ export function PairedBars({
   );
 }
 
-/** Two headline figures side by side inside one panel. */
+type FigureItem = {figure: string; label: string; tone?: 'muted'; isHero?: boolean};
+
+/** Two headline figures side by side inside one panel. isHero sets the one
+    accent-gradient figure with a glow halo; one per page. */
 export function FigurePair({
   title,
   note,
@@ -152,16 +157,22 @@ export function FigurePair({
 }: {
   title: string;
   note?: string;
-  items: [{figure: string; label: string; tone?: 'muted'}, {figure: string; label: string; tone?: 'muted'}];
+  items: [FigureItem, FigureItem];
 }) {
   return (
     <ChartFrame title={title} note={note}>
       <Grid columns={2} gap={4}>
         {items.map((it) => (
           <VStack key={it.label} gap={1}>
-            <Text type="figure-xl" color={it.tone === 'muted' ? 'secondary' : 'primary'}>
-              {it.figure}
-            </Text>
+            {it.isHero ? (
+              <span className="figure-hero">
+                <Text type="figure-xl">{it.figure}</Text>
+              </span>
+            ) : (
+              <Text type="figure-xl" color={it.tone === 'muted' ? 'secondary' : 'primary'}>
+                {it.figure}
+              </Text>
+            )}
             <Text type="supporting" color="secondary">
               {it.label}
             </Text>
@@ -172,10 +183,15 @@ export function FigurePair({
   );
 }
 
-function Track({value, series}: {value: number; series?: 'b' | 'muted'}) {
+function Track({value, series, isGlow}: {value: number; series?: 'b' | 'muted'; isGlow?: boolean}) {
   return (
     <span className="bar-track" role="presentation">
-      <span className="bar-fill" data-series={series} style={{['--v' as string]: value}} />
+      <span
+        className="bar-fill"
+        data-series={series}
+        data-glow={isGlow ? 'true' : undefined}
+        style={{['--v' as string]: value}}
+      />
     </span>
   );
 }
